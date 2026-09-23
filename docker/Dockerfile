@@ -22,7 +22,7 @@ RUN ln -sf /usr/bin/python3 /usr/local/bin/python
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 RUN pip install -U pip
 RUN pip install -U setuptools wheel
-RUN pip install --no-cache-dir "autogluon==1.6.3" --extra-index-url https://download.pytorch.org/whl/cu130
+RUN pip install --no-cache-dir --retries 10 --timeout 120 "autogluon==1.6.3"
 
 # setup jupyter
 RUN pip3 install jupyterlab
