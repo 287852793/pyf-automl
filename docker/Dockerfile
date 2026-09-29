@@ -13,6 +13,7 @@ RUN echo "Use aliyun source for installing libs" ;
 RUN apt-get update
 RUN apt-get install -y --no-install-suggests --no-install-recommends \
   vim wget curl dmidecode tzdata poppler-utils python3 python3-pip 
+RUN apt-get install -y libgomp1
 
 # make some useful symlinks that are expected to exist
 RUN ln -sf /usr/bin/pydoc3 /usr/local/bin/pydoc
@@ -29,6 +30,7 @@ RUN pip3 install jupyterlab
 RUN pip3 install jupyter-core
 RUN pip3 install --upgrade ipykernel
 COPY jupyter_lab_config.py /root/.jupyter/jupyter_lab_config.py
+
 
 # alias
 RUN echo "alias ll='ls $LS_OPTIONS -l'" >> /root/.bashrc
